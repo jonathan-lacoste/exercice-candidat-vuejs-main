@@ -7,6 +7,10 @@
     p Afficher une suite de chiffres de 1 à 100
     p Réponse:
     //- Affichage réponse Exo 1.1 ici %>
+    -var n = 1;
+    p
+      while n < 101
+        span= n++ + " "
     h2 Exo 1.2 : lister les sociétés
     p Ici, lister toutes les sociétés inclues dans la base de données:
     p L'api à utiliser est disponible sur <a href='http://localhost:3000/api/companies'>http://localhost:3000/api/companies</a> (300? dépendant de votre environnement)
