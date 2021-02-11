@@ -24,6 +24,7 @@
     br
     p Réponse:
     //- Affichage réponse Exo 1.2 ici
+    List
     h2 Exo 1.3 : appliquer un style différent par société
     .alert.alert-info Meme s'il n'est pas obligatoire de s'en servir, le framework CSS bootstrap est utilisable sur ce projet, et les langage SASS/SCSS sont disponibles. Possibilité de gagner du temps avec les classes contextuelles de boostrap?
     p
@@ -39,11 +40,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import ExoDisclaimer from '../components/ExoDisclaimer.vue'
+import List from '../components/List.vue'
 
 export default Vue.extend({
   name: 'App',
   components: {
-    ExoDisclaimer
+    ExoDisclaimer,
+    List
   }
 })
 </script>
