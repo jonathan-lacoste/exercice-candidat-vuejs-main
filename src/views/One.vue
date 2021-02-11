@@ -35,18 +35,21 @@
         li Sinon si le le nombre de lettre dans le nom de la société est impair, afficher le nom de la société en bleu
     p Réponse:
     //- Affichage réponse Exo 1.3 ici
+    ListCustomed
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import ExoDisclaimer from '../components/ExoDisclaimer.vue'
 import List from '../components/List.vue'
+import ListCustomed from '../components/ListCustomed.vue'
 
 export default Vue.extend({
   name: 'App',
   components: {
     ExoDisclaimer,
-    List
+    List,
+    ListCustomed
   }
 })
 </script>
