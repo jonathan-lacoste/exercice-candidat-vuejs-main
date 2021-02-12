@@ -1,11 +1,10 @@
 
 <template lang='pug'>
   div
-    ul
-      li(v-for="(value, key) in data")
-        span.text-primary(v-if="value.color === 'bleu'") Société {{value.title}}
-        span.text-danger(v-if="value.color === 'rouge'") Société {{value.title}}
-        span.text-warning(v-if="value.color === 'jaune'") Société {{value.title}}
+    b-list-group
+      b-list-group-item(v-for="(value, key) in data" :key="key")
+        span(v-if="color" :class='getClass(value)') {{value.title}}
+        span(v-else) {{value.title}}
 </template>
 
 <script lang="ts">
@@ -15,36 +14,35 @@ import axios from 'axios'
 declare interface Companies {
     title: string;
     code: string;
-    color: string;
   }
 export default Vue.extend({
+  props: { color: Boolean },
   data () {
     return {
-      data: [] as Companies[],
-      color: []
+      data: [] as Companies[]
     }
   },
   created: function () {
     axios
       .get('/api/companies')
-      .then(response => {
-        const res = response.data[0].companies
-        for (let i = 0; i < res.length; i++) {
-          let color = ''
-          if (res[i].title[0].toUpperCase() === 'S') {
-            color = 'jaune'
-          } else {
-            if (res[i].title.length % 2 === 0) {
-              color = 'rouge'
-            } else {
-              color = 'bleu'
-            }
-          }
-          const temp: Companies = { ...res[i], color: color }
-          this.data.push(temp)
-        }
+      .then(res => {
+        this.data = res.data[0].companies
       })
-    console.log('coucoo')
+  },
+  methods: {
+    getClass: function (val: Companies) {
+      let color = ''
+      if (val.title[0].toUpperCase() === 'S') {
+        color = 'text-warning'
+      } else {
+        if (val.title.length % 2 === 0) {
+          color = 'text-danger'
+        } else {
+          color = 'text-primary'
+        }
+      }
+      return color
+    }
   }
 })
 </script>
