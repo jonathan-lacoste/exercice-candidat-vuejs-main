@@ -16,18 +16,20 @@ declare interface Companies {
     code: string;
   }
 export default Vue.extend({
-  props: { color: Boolean },
+  props: { color: Boolean, urlApi: String },
   data () {
     return {
       data: [] as Companies[]
     }
   },
   created: function () {
-    axios
-      .get('/api/companies')
-      .then(res => {
-        this.data = res.data[0].companies
-      })
+    if (this.urlApi) {
+      axios
+        .get(this.urlApi)
+        .then(res => {
+          this.data = res.data[0].companies
+        })
+    }
   },
   methods: {
     getClass: function (val: Companies) {
