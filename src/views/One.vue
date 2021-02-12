@@ -36,7 +36,7 @@
         li Sinon si le le nombre de lettre dans le nom de la société est impair, afficher le nom de la société en bleu
     p Réponse:
     //- Affichage réponse Exo 1.3 ici
-    ListCustomed(color=true)
+    ListCustomed(urlApi='/api/companies' color=true)
     br
 </template>
 
