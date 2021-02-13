@@ -15,7 +15,7 @@
     p Ajouter un bouton écrire l'interaction suivante: Quand l'utilisateur clique sur le bouton, le dernier élément de la liste A disparait de celle-ci, et est rajouté dans la liste B.
     p Réponse:
     //- Affichage réponse Exo 2.2 ici
-
+    DoubleList
     h2 Exo 2.3 : Utilisation de VueX
     p Si l'utilisation de VueX n'a pas été effectuée dans les exercices précédents, il faut que l'état des deux listes A et B soit enregistré dans le store VueX.
     p VueX est initialisé ici @/src/store/index.ts

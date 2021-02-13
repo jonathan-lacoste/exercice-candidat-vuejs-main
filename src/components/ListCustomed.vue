@@ -2,33 +2,33 @@
 <template lang='pug'>
   div
     b-list-group
-      b-list-group-item(v-for="(value, key) in data" :key="key")
+      b-list-group-item(v-for="(value, key) in listDefault" :key="key")
         span(v-if="color" :class='getClass(value)') {{value.title}}
         span(v-else) {{value.title}}
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import axios from 'axios'
 
 declare interface Companies {
-    title: string;
-    code: string;
-  }
+  title: string;
+  code: string;
+}
 export default Vue.extend({
-  props: { color: Boolean, urlApi: String },
+  props: {
+    color: Boolean,
+    allCompagnies: Boolean,
+    list: Array
+  },
   data () {
     return {
       data: [] as Companies[]
     }
   },
-  created: function () {
-    if (this.urlApi) {
-      axios
-        .get(this.urlApi)
-        .then(res => {
-          this.data = res.data[0].companies
-        })
+  computed: {
+    listDefault () {
+      console.log(this.allCompagnies)
+      return this.allCompagnies ? this.$store.getters.getInitCompanies : this.list
     }
   },
   methods: {

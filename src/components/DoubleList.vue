@@ -3,11 +3,15 @@
   div
     b-row
       b-col
+        button(@click="moveItem") Déplacer dernier élément de A => B
+        label Element déplacé: {{movedItem.title}}
+    b-row
+      b-col
         h3 Liste A
-        ListCustomed(urlApi="/api/companies")
+        ListCustomed(:list='companiesA')
       b-col
         h3 Liste B
-        ListCustomed
+        ListCustomed(:list='companiesB')
 </template>
 
 <script lang="ts">
@@ -18,6 +22,25 @@ export default Vue.extend({
   name: 'App',
   components: {
     ListCustomed
+  },
+  computed: {
+    movedItem () {
+      return this.$store.getters.getMovedItem
+    },
+    initCompanies () {
+      return this.$store.getters.getInitCompanies
+    },
+    companiesA () {
+      return this.$store.getters.getCompanies[0]
+    },
+    companiesB () {
+      return this.$store.getters.getCompanies[1]
+    }
+  },
+  methods: {
+    moveItem () {
+      this.$store.dispatch('moveItem')
+    }
   }
 })
 </script>
