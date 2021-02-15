@@ -15,6 +15,7 @@ declare interface Companies {
   code: string;
 }
 export default Vue.extend({
+  name: 'ListCustomed',
   props: {
     color: Boolean,
     allCompagnies: Boolean,

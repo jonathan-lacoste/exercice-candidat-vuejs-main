@@ -10,6 +10,7 @@
 import axios from 'axios'
 
 export default {
+  name: 'List',
   data () {
     return {
       data: []

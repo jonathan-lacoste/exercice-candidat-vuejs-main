@@ -19,7 +19,7 @@ import Vue from 'vue'
 import ListCustomed from './ListCustomed.vue'
 
 export default Vue.extend({
-  name: 'App',
+  name: 'DoubleList',
   components: {
     ListCustomed
   },
