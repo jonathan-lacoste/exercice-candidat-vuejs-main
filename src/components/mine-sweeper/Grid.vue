@@ -62,6 +62,23 @@ export default Vue.extend({
         }
         arrayVal.push(val)
       }
+      const arrayValReversed = arrayVal.reverse()
+      let bombToPut = this.nbBomb
+      for (let i = 0; i < this.lineSize; i++) {
+        const arrayLoc = [] as number[]
+        for (let j = 0; j < this.lineSize; j++) {
+          // Bomb ou chiffre
+          const isBomb = bombToPut === 0 ? 0 : _.random(0, 1)
+          if (isBomb) {
+            bombToPut -= 1
+            arrayLoc.push(0)
+          } else {
+            const val = arrayValReversed.pop() as number
+            arrayLoc.push(val)
+          }
+        }
+        this.tab.push(arrayLoc)
+      }
       // console.log(this.nbBomb)
       // console.log(arrayVal)
       // console.log(nbRandomVal)
